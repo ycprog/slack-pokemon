@@ -15,7 +15,7 @@ if(process.env.REDISTOGO_URL) {
   redis.auth(rtg.auth.split(":")[1]);
 } else {
   //then we're running locally
-  redis = require("redis").createClient();
+  redis = require("redis").createClient(6379, process.env.REDIS_PORT_6379_TCP_ADDR || '127.0.0.1');
 }
 
 /* Turn Redis Methods Into Promise-returning Ones */
